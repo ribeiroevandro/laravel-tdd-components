@@ -1,6 +1,6 @@
 <?php
 
-use App\View\Components\UI\Modal;
+use App\View\Components\Ui\Modal;
 
 test('it returns correct max width class', function () {
     expect((new Modal(maxWidth: 'sm'))->maxWidthClass())->toBe('max-w-sm')
