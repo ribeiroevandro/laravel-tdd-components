@@ -31,6 +31,21 @@
                 This is a info message
             </x-ui.alert>
 
+            <form action="{{ route('contact.store') }}" method="POST" class="w-full max-w-lg" novalidate>
+                @csrf
+                <x-form.input
+                    name="email"
+                    type="email"
+                    label="Email Address"
+                    placeholder="Enter your email"
+                    value="{{ old('email') }}"
+                    required
+                />
+                <button type="submit" class="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
+                    Submit
+                </button>
+            </form>
+
             <div class="flex flex-col gap-4">
                 <button
                     @click="openModal('example')"
