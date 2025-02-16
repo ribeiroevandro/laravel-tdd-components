@@ -49,7 +49,7 @@ test('it shows error message when validation fails', function () {
 
     expect($result)
         ->toContain('The email field is required.')
-        ->toContain('error-message')
+        ->toContain('text-red-800 font-bold text-xs')
         ->toContain('input-error');
 });
 

@@ -35,7 +35,7 @@
     />
 
     @error($name)
-        <div class="error-message">
+        <div class="text-red-800 font-bold text-xs">
             {{ $message }}
         </div>
     @enderror
