@@ -16,19 +16,19 @@ class Alert extends Component
 
     private const TYPE_CONFIG = [
         'success' => [
-            'text_color' => 'text-white',
-            'bg_color' => 'bg-alert-success/50'
+            'text_color' => 'text-green-800',
+            'bg_color' => 'bg-green-50'
         ],
         'error' => [
-            'text_color' => 'text-white',
-            'bg_color' => 'bg-alert-error/50'
+            'text_color' => 'text-red-800',
+            'bg_color' => 'bg-red-50'
         ],
         'warning' => [
-            'text_color' => 'text-yellow-600',
+            'text_color' => 'text-yellow-800',
             'bg_color' => 'bg-yellow-50'
         ],
         'info' => [
-            'text_color' => 'text-blue-600',
+            'text_color' => 'text-blue-800',
             'bg_color' => 'bg-blue-50'
         ]
     ];
