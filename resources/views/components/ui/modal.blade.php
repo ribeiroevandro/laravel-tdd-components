@@ -27,3 +27,6 @@
         </div>
     @endif
 </div>
+<div class="modal {{ $maxWidthClass() }}">
+    {{ $slot }}
+</div>
