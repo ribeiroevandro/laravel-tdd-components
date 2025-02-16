@@ -1,11 +1,19 @@
-import './bootstrap';
-import Alpine from 'alpinejs'
+import "./bootstrap";
+import Alpine from "alpinejs";
 
-window.Alpine = Alpine
+window.Alpine = Alpine;
 
 window.handleModal = (event, params = {}) => {
-    console.log('handleModal', event, params)
-    window.dispatchEvent(new CustomEvent(event, params));
-}
+    const eventName =
+        typeof event === "string" ? event : event?.target?.dataset?.modal;
+    if (!eventName) return;
 
-Alpine.start()
+    window.dispatchEvent(
+        new CustomEvent(eventName, {
+            detail: params,
+            bubbles: true,
+        })
+    );
+};
+
+Alpine.start();

@@ -1,26 +1,33 @@
 <?php
 
-use App\View\Components\Ui\Alert;
-use App\View\Components\Enums\AlertType;
-use Illuminate\View\ViewException;
+use Illuminate\Support\Facades\Blade;
 
-test('it has default values', function () {
-    $alert = new Alert();
+test('it can render alert with default values', function () {
+    $result = Blade::render('<x-ui.alert>Test Message</x-ui.alert>');
 
-    expect($alert->alertType)->toBe(AlertType::INFO)
-        ->and($alert->dismissible)->toBeFalse();
+    expect($result)
+        ->toContain('Test Message')
+        ->toContain('bg-blue-100')
+        ->toContain('text-blue-800')
+        ->not->toContain('data-dismissible');
 });
 
-test('it returns correct type classes', function () {
-    $alert = new Alert(AlertType::SUCCESS->value);
+test('it can render dismissible alert', function () {
+    $result = Blade::render('<x-ui.alert :dismissible="true">Test Message</x-ui.alert>');
 
-    expect($alert->typeClasses())->toBe('bg-green-100 text-green-800');
+    expect($result)
+        ->toContain('data-dismissible')
+        ->toContain('Test Message');
 });
 
-test('it throws exception for invalid type', function () {
-    expect(fn () => new Alert('invalid'))
-        ->toThrow(
-            ViewException::class,
-            'Alert type must be one of: success, error, warning, info'
-        );
+test('it can render different alert types', function () {
+    $success = Blade::render('<x-ui.alert type="success">Success</x-ui.alert>');
+
+    expect($success)->toContain('bg-green-100');
+});
+
+test('it can merge additional classes', function () {
+    $result = Blade::render('<x-ui.alert class="custom-class">Test</x-ui.alert>');
+
+    expect($result)->toContain('custom-class');
 });
