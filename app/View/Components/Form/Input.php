@@ -3,6 +3,7 @@
 namespace App\View\Components\Form;
 
 use Illuminate\View\Component;
+use Illuminate\View\ViewException;
 
 class Input extends Component
 {
@@ -12,8 +13,19 @@ class Input extends Component
         public ?string $label = null,
         public ?string $value = null,
         public ?string $placeholder = null,
-        public bool $required = false
+        public ?bool $required = false,
+        public ?bool $disabled = false
     ) {
+        $this->validateType();
+    }
+
+    protected function validateType(): void
+    {
+        $validTypes = ['text', 'email', 'password', 'number', 'tel', 'url', 'search', 'date'];
+
+        if (!in_array($this->type, $validTypes)) {
+            throw new ViewException('Invalid input type');
+        }
     }
 
     public function render()

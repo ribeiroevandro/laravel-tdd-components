@@ -22,9 +22,9 @@ test('it can render input', function () {
     expect($result)
         ->toContain('name="email"')
         ->toContain('type="email"')
+        ->toContain('Email Address')
         ->toContain('placeholder="Enter your email"')
-        ->toContain('required')
-        ->toContain('Email Address');
+        ->toContain('required');
 });
 
 test('it can render input without optional attributes', function () {
