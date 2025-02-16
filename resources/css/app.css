@@ -1,3 +1,83 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@plugin '@tailwindcss/forms';
+@plugin '@tailwindcss/typography';
+
+@source "../views";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --font-sans: Figtree, ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+  --color-primary: #ffb727;
+  --color-secondary: #000c2c;
+
+  --height-screen-layout: calc(100vh - 5rem);
+
+  --text-xxs: 0.625rem;
+  --text-xxs--line-height: 0.75rem;
+  --text-xxs--color: red;
+  --text-s: 0.8125rem;
+  --text-s--line-height: 1rem;
+  --text-heading: 2rem;
+  --text-heading--line-height: 2.5rem;
+  --text-heading--font-weight: 500;
+
+  --shadow-md: 0 4px 8px 0 rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.12);
+  --shadow-nps: 0px 16px 32px 0px rgba(0, 0, 0, 0.16);
+  --shadow-preset: 0 8px 24px 0 rgba(0, 0, 0, 0.16);
+
+  --spacing-85: 21.458125rem;
+
+  --background-position-bottom-10: right 2.5rem bottom;
+
+  --border-width-1: 1px;
+  --border-width-5: 5px;
+
+  --animate-loading-screen: loading-screen 2s ease-in-out infinite;
+  --animate-spin-slow: spin 2s linear infinite;
+
+  @keyframes loading-screen {
+    20% {
+      background-position: 0% 0%, 50% 50%, 100% 50%;
+    }
+    40% {
+      background-position: 0% 100%, 50% 0%, 100% 50%;
+    }
+    60% {
+      background-position: 0% 50%, 50% 100%, 100% 0%;
+    }
+    80% {
+      background-position: 0% 50%, 50% 50%, 100% 100%;
+    }
+  }
+  @keyframes placards {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+}
