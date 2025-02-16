@@ -13,6 +13,8 @@
 
   --color-primary: #ffb727;
   --color-secondary: #000c2c;
+  --color-alert-success: #2b8a3e;
+  --color-alert-error: red;
 
   --height-screen-layout: calc(100vh - 5rem);
 

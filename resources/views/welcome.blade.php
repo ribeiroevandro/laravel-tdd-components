@@ -12,10 +12,22 @@
 
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         <!-- Styles / Scripts -->
-        
+
     </head>
     <body class="font-sans antialiased flex items-center justify-center min-h-screen bg-gray-500 bg-pattern">
-        <h1>POC</h1>
-
+        <div class="flex flex-col container gap-10 bg-">
+            <x-alert type="success">
+                This is a success message
+            </x-alert>
+            <x-alert type="error">
+                This is a error message
+            </x-alert>
+            <x-alert type="warning">
+                This is a warning message
+            </x-alert>
+            <x-alert type="info">
+                This is a info message
+            </x-alert>
+        </div>
     </body>
 </html>
