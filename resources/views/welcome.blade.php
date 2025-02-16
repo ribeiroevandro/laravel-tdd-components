@@ -16,7 +16,7 @@
             [x-cloak] { display: none !important; }
         </style>
     </head>
-    <body class="font-sans antialiased flex items-center justify-center min-h-screen bg-gray-500 bg-pattern" x-data="welcome">
+    <body class="font-sans antialiased flex items-center justify-center min-h-screen bg-gray-200 bg-pattern" x-data="welcome">
         <div class="flex flex-col container gap-10 bg-">
             <x-ui.alert type="success">
                 This is a success message
