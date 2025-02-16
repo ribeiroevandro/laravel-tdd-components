@@ -5,21 +5,21 @@ use Illuminate\View\ViewException;
 
 test('can render alert component', function () {
     $result = Blade::render(
-        '<x-alert type="success">Test message</x-alert>'
+        '<x-alert type="success">Test success message</x-alert>'
     );
 
     expect($result)
-        ->toContain('Test message')
+        ->toContain('Test success message')
         ->toContain('success')
         ->toBeString();
 });
 
 test('alert component accepts different types', function () {
     $typeConfigs = [
-        'success' => ['bg-alert-success/50', 'text-white'],
-        'error' => ['bg-alert-error/50', 'text-white'],
-        'warning' => ['bg-yellow-50', 'text-yellow-600'],
-        'info' => ['bg-blue-50', 'text-blue-600'],
+        'success' => ['bg-green-50', 'text-green-800'],
+        'error' => ['bg-red-50', 'text-red-800'],
+        'warning' => ['bg-yellow-50', 'text-yellow-800'],
+        'info' => ['bg-blue-50', 'text-blue-800'],
     ];
 
     foreach ($typeConfigs as $type => $classes) {
@@ -56,19 +56,19 @@ test('alert component throws exception for empty type', function () {
 test('alert component renders with correct styling for each type', function () {
     $expectedStyles = [
         'success' => [
-            'text' => 'text-white',
-            'bg' => 'bg-alert-success/50'
+            'text' => 'text-green-800',
+            'bg' => 'bg-green-50'
         ],
         'error' => [
-            'text' => 'text-white',
-            'bg' => 'bg-alert-error/50'
+            'text' => 'text-red-800',
+            'bg' => 'bg-red-50'
         ],
         'warning' => [
-            'text' => 'text-yellow-600',
+            'text' => 'text-yellow-800',
             'bg' => 'bg-yellow-50'
         ],
         'info' => [
-            'text' => 'text-blue-600',
+            'text' => 'text-blue-800',
             'bg' => 'bg-blue-50'
         ],
     ];
