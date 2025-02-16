@@ -12,22 +12,53 @@
 
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         <!-- Styles / Scripts -->
-
+        <style>
+            [x-cloak] { display: none !important; }
+        </style>
     </head>
-    <body class="font-sans antialiased flex items-center justify-center min-h-screen bg-gray-500 bg-pattern">
+    <body class="font-sans antialiased flex items-center justify-center min-h-screen bg-gray-500 bg-pattern" x-data="welcome">
         <div class="flex flex-col container gap-10 bg-">
-            <x-alert type="success">
+            <x-ui.alert type="success">
                 This is a success message
-            </x-alert>
-            <x-alert type="error">
+            </x-ui.alert>
+            <x-ui.alert type="error">
                 This is a error message
-            </x-alert>
-            <x-alert type="warning">
+            </x-ui.alert>
+            <x-ui.alert type="warning">
                 This is a warning message
-            </x-alert>
-            <x-alert type="info">
+            </x-ui.alert>
+            <x-ui.alert type="info">
                 This is a info message
-            </x-alert>
+            </x-ui.alert>
+
+            <div class="flex flex-col gap-4">
+                <button
+                    @click="openModal('example')"
+                    class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+                >
+                    Abrir Modal com Evento
+                </button>
+                <x-ui.modal
+                    x-on:example-modal.window="showModal = !showModal;"
+                    x-show="showModal"
+                    @click.outside="showModal = false"
+                    max-width="2xl"
+                    title="Teste"
+                >
+                    porra
+                </x-ui.modal>
+            </div>
         </div>
+        <script>
+            const welcome = () => {
+                return {
+                    showModal: false,
+                    openModal(integration) {
+                        handleModal(`${integration}-modal`, null);
+                    },
+                }
+            }
+        </script>
+
     </body>
 </html>
