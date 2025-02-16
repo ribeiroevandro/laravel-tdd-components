@@ -7,7 +7,9 @@ use Illuminate\View\Component;
 class Modal extends Component
 {
     public function __construct(
-        public string $maxWidth = 'md'
+        public string $maxWidth = 'md',
+        public ?string $title = null,
+        public bool $closeable = false
     ) {}
 
     public function maxWidthClass(): string
